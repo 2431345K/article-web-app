@@ -4,8 +4,8 @@ from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-    return HttpResponse("This is home page")
-
+    context_dict = {'test': 'Test'}
+    return render(request, 'article_web_app/index.html', context=context_dict)
 
 def contact_us(request):
     return HttpResponse("This is contact us page")

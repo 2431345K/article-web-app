@@ -1,5 +1,7 @@
 from django.urls import path
 from article_reviewer import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = 'article_reviewer'
 
@@ -14,4 +16,4 @@ urlpatterns = [
     path('category/add_article', views.add_article, name='add_article'),
     path('category/article/make_rating', views.make_rating, name='make_rating'),
     path('', views.index, name='index'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

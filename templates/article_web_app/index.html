@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'CSS/index.css' %}">
+    
+<head>
+    <title>Article Reviewer</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="menu">
+            <ul>
+                <li class="logo"> <img src="{% static 'images/article-logo.png' %}"> </li>
+                <li><h1>Article Reviewer</h1></li>
+            </ul>
+        </div>
+        <div class="menu">
+            <ul>
+                <li> sign up</li>|
+                <li> sign in</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h1>Sign Up</h1>
+    
+    <form>
+        <label for="email">Email </label>
+        <input type="text" id="email" name="email"><br><br>
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" name="Password"><br><br>
+        
+        <label for="conf_password">Confirm Password:</label>
+        <input type="password" id="conf_password" name="Password"><br><br>
+        
+        <input type="Submit" value="Sign Up">
+    </form>
+
+</body>
