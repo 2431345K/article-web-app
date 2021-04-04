@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+##added 'article_reviewer' to installed apps 
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'article_reviewer',
 ]
 
 MIDDLEWARE = [
