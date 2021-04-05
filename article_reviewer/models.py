@@ -9,8 +9,6 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Category(models.Model):
     name = models.CharField(max_length=30, unique=True)
     slug = models.SlugField(unique=True)
-    
-  
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -69,7 +67,7 @@ class Review(models.Model):
 ##
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
     ##website = models.URLField(blank=True)
     picture = models.ImageField(upload_to='profile_images', blank=True)
     author = models.BooleanField()
