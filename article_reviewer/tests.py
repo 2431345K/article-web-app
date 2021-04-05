@@ -24,7 +24,7 @@ class ModelTests(TestCase):
     
     def setUp(self):
         category = Category.objects.get_or_create(name='Science', slug=slugify('Science'))
-        article = Article.objects.get_or_create(category=category, url='/category/example_title', author='example', averageRating=3, reviews=None, title='example_title')
+        article = Article.objects.get_or_create(category=str(category), url='/category/example_title', author='example', averageRating=3, reviews=None, title='example_title')
         review = Review.objects.get_or_create(article=article, commentID=123, rating=4, author='example', date='2021-04-05', comment='This is an example comment')
         user_profile = UserProfile.objects.get_or_create(user=self.create_user_object, picture=None, author=False)
         
