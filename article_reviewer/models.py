@@ -9,6 +9,8 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Category(models.Model):
     name = models.CharField(max_length=30, unique=True)
     slug = models.SlugField(unique=True)
+    
+  
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
