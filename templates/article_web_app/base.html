@@ -16,8 +16,8 @@
     <div class="container">
         <div class="menu">
             <ul>
-                <li class="logo"> <img src="{% static 'images/article-logo.png' %}"> </li>
-                <li><h1><a href="{% url 'article_reviewer:index' %}">Article Reviewer</a></h1></li>
+                <li class="logo"> <a href="{% url 'article_reviewer:index' %}"><img src="{% static 'images/article-logo.png' %}"></a></li>
+                <li class="heading"><h1><a href="{% url 'article_reviewer:index' %}">Article Reviewer</a></h1></li>
                 <li><a href="{% url 'article_reviewer:category' %}">Categories</a></li>|
                 <li><a href="{% url 'article_reviewer:contact_us' %}">Contact Us</a></li>
 
