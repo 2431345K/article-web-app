@@ -9,13 +9,13 @@
 
     <div>
         {% if categories %}
-            <ul>
+            <nav>
             {% for category in categories %}
-            <li>
+
                 <a href="{% url 'article_reviewer:show_category' category.slug %}">{{ category.name }}</a>
-            </li>
+
             {% endfor %}
-            </ul>
+            </nav>
         {% else %}
             <strong>There are no categories present.</strong>
         {% endif %}

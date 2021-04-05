@@ -7,5 +7,11 @@
 
 {% block body_block %}
     <h1>Add Article</h1>
+    <hr>
+    <form id="article_form" method="post" action="{% url 'article_reviewer:add_article' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ article_form.as_p }}
 
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 {% endblock %}

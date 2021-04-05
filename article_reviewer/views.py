@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from article_reviewer.forms import UserForm
+from article_reviewer.forms import UserForm, ArticleForm, UserProfileForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
@@ -12,13 +12,21 @@ from article_reviewer.models import UserProfile, Article, Category
 
 def index(request):
     category_list = Category.objects.all()
-    article_list = Article.objects.order_by('-averageRating')[:5]
+    article_list = Article.objects.order_by('-averageRating')[:10]
 
     context_dict = {}
     context_dict['categories'] = category_list
     context_dict['articles'] = article_list
 
     return render(request, 'article_web_app/index.html', context=context_dict)
+
+
+def category(request):
+    category_list = Category.objects.all()
+
+    context_dict = {'categories': category_list}
+
+    return render(request, 'article_web_app/category.html', context=context_dict)
 
 
 def show_category(request, category_name_slug):
@@ -32,9 +40,8 @@ def show_category(request, category_name_slug):
         context_dict['articles'] = articles
         context_dict['category'] = category
     except Category.DoesNotExist:
-
         context_dict['category'] = None
-        context_dict['pages'] = None
+        context_dict['articles'] = None
 
     return render(request, 'article_web_app/category.html', context=context_dict)
 
@@ -48,29 +55,29 @@ def sign_up(request):
 
     if request.method == 'POST':
         user_form = UserForm(request.POST)
-        # profile_form = UserProfileForm(request.POST)
+        profile_form = UserProfileForm(request.POST)
 
         if user_form.is_valid():
             user = user_form.save()
             user.set_password(user.password)
             user.save()
 
-            # profile = profile_form.save(commit=False)
-            # profile.user = user
+            profile = profile_form.save(commit=False)
+            profile.user = user
 
-            # if 'picture' in request.FILES:
-            #     profile.picture = request.FILES['picture']
-            #
-            # profile.save()
+            if 'picture' in request.FILES:
+                profile.picture = request.FILES['picture']
+
+            profile.save()
             registered = True
         else:
             print(user_form.errors)
             return HttpResponse("Register failed")
     else:
         user_form = UserForm()
-        # profile_form = UserProfileForm()
+        profile_form = UserProfileForm()
 
-    return render(request, 'article_web_app/sign_up.html', context={'user_form': user_form, 'registered': registered})
+    return render(request, 'article_web_app/sign_up.html', context={'user_form': user_form, 'profile_form': profile_form,'registered': registered})
 
 
 def user_login(request):
@@ -103,21 +110,41 @@ def user_logout(request):
 @login_required
 def my_account(request):
     context_dict = {}
-    # user_profile = UserProfile.objects.get(user=request.user)
-    context_dict['picture'] = ""#user_profile.picture
+    user_profile = UserProfile.objects.get(user=request.user)
+    context_dict['user_profile'] = user_profile
     return render(request, 'article_web_app/my_account.html', context=context_dict)
 
-
-def category(request):
-    return render(request, 'article_web_app/category.html')
 
 @login_required
 def article(request):
     return HttpResponse("This is article page")
 
 
+@login_required
 def add_article(request):
-    return render(request, 'article_web_app/add_article.html')
+
+    form = ArticleForm()
+    context_dict = {'article_form': form}
+
+    if request.method == 'POST':
+        # using the forms we grab information from data
+        form = ArticleForm(request.POST)
+
+        # if both forms are valid, user is saved
+        if form.is_valid():
+            article = form.save(commit=False)
+
+            if 'picture' in request.FILES:
+                article.picture = request.FILES['picture']
+
+            article.save()
+            # adding profile picture if one was given
+            return redirect(reverse('article_reviewer:my_account'))
+        # else prints errors
+        else:
+            print(form.errors)
+
+    return render(request, 'article_web_app/add_article.html', context=context_dict)
 
 
 def make_rating(request):

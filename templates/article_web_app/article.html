@@ -3,29 +3,12 @@
 
 {% block title_block %}
     Article Reviewer
-{#    {% if category %}#}
-{#        {{ category.name }}#}
-{#    {% else %}#}
-{#        Unknown Category#}
-{#    {% endif %}#}
 {% endblock %}
 
 {% block body_block %}
 
-    {% if categories %}
-        <h1>Categories</h1>
-        <hr>
-        <ul>
-            {% for category in categories %}
-                <li><a href="{% url 'article_reviewer:show_category' category.slug %}">{{ category.name }}</a></li>
-            {% endfor %}
-        </ul>
-{#    {% else %}#}
-{#        <strong>There are no categories present.</strong>#}
-    {% endif %}
-
-    {% if category %}
-    <h1>{{ category.name }}</h1>
+    {% if article %}
+        <h1>{{ article.name }}</h1>
     {% if articles %}
     <ul>
         {% for article in articles %}

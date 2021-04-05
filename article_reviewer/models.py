@@ -30,7 +30,7 @@ class Article(models.Model):
     url = models.URLField(max_length=5000, unique=True)
     picture = models.ImageField(upload_to='article_images', blank=True)  ##define more about image
     author = models.CharField(max_length=30)
-    averageRating = models.IntegerField(default=None, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    averageRating = models.IntegerField(default=5, validators=[MinValueValidator(1), MaxValueValidator(5)])
     reviews = models.CharField(max_length=100, blank=True)
 
     title = models.CharField(max_length=128)
