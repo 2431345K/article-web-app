@@ -1,42 +1,58 @@
-<!DOCTYPE html>
-<html>
+{% extends 'article_web_app/base.html' %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'CSS/index.css' %}">
-    
-<head>
-    <title>Article Reviewer</title>
 
-</head>
+{% block title_block %}
+    Article Reviewer
+{% endblock %}
 
-<body>
-    <div class="container">
-        <div class="menu">
+{% block body_block %}
+
+    <div>
+        {% if categories %}
             <ul>
-                <li class="logo"> <img src="{% static 'images/article-logo.png' %}"> </li>
-                <li><h1>Article Reviewer</h1></li>
+            {% for category in categories %}
+            <li>
+                <a href="{% url 'article_reviewer:show_category' category.slug %}">{{ category.name }}</a>
+            </li>
+            {% endfor %}
             </ul>
-        </div>
-        <div class="menu">
-            <ul>
-                <li> sign up</li>|
-                <li> sign in</li>
-            </ul>
-        </div>
+        {% else %}
+            <strong>There are no categories present.</strong>
+        {% endif %}
     </div>
-    
-    <h1>Sign Up</h1>
-    
-    <form>
-        <label for="email">Email </label>
-        <input type="text" id="email" name="email"><br><br>
-        
-        <label for="password">Password</label>
-        <input type="password" id="password" name="Password"><br><br>
-        
-        <label for="conf_password">Confirm Password:</label>
-        <input type="password" id="conf_password" name="Password"><br><br>
-        
-        <input type="Submit" value="Sign Up">
-    </form>
 
-</body>
+    <h2>The Most Popular Articles</h2>
+    <hr/>
+
+         <div>
+            {% if articles %}
+            <ul>
+                {% for article in articles %}
+                    <li><a href="{{ article.url }}">{{ article.title }}</a></li>
+                    <li><img src="{{ MEDIA_URL }}{{ article.picture }}" alt="{{ article.author }}"  width="100" height="100"/></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <strong>There are no articles present.</strong>
+            {% endif %}
+        </div>
+{% endblock %}
+
+
+{#<body>#}
+{#    <h1>Sign Up</h1>#}
+{##}
+{#    <form>#}
+{#        <label for="email">Email </label>#}
+{#        <input type="text" id="email" name="email"><br><br>#}
+{##}
+{#        <label for="password">Password</label>#}
+{#        <input type="password" id="password" name="Password"><br><br>#}
+{##}
+{#        <label for="conf_password">Confirm Password:</label>#}
+{#        <input type="password" id="conf_password" name="Password"><br><br>#}
+{##}
+{#        <input type="Submit" value="Sign Up">#}
+{#    </form>#}
+{##}
+{#</body>#}

@@ -1,0 +1,16 @@
+{% extends 'article_web_app/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    Article Reviewer
+{% endblock %}
+
+{% block body_block %}
+    <h1>My Account Profile</h1>
+    <img>
+        <h3>Username: {{ user.username }}</h3>
+        <h3>Email : {{ user.email }}</h3>
+        <img src="{{ MEDIA_URL }}{{ picture }}" width="200" height="200"/></br>
+        <a href="{% url 'article_reviewer:add_article' %}">Add article</a>
+    </div>
+{% endblock %}

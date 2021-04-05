@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+    <head lang="en">
+        <meta charset="utf-8" />
+        <title>
+            {% block title_block %}
+                Article Reviewer
+            {% endblock %}
+        </title>
+        <link rel="stylesheet" type="text/css" href="{% static 'CSS/index.css' %}">
+    </head>
+
+    <body>
+    <div class="container">
+        <div class="menu">
+            <ul>
+                <li class="logo"> <img src="{% static 'images/article-logo.png' %}"> </li>
+                <li><h1><a href="{% url 'article_reviewer:index' %}">Article Reviewer</a></h1></li>
+                <li><a href="{% url 'article_reviewer:category' %}">Categories</a></li>|
+                <li><a href="{% url 'article_reviewer:contact_us' %}">Contact Us</a></li>
+
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'article_reviewer:my_account' %}"> {{ user.username }} </a></li>
+                    <li><a href="{% url 'article_reviewer:logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'article_reviewer:login' %}">Sign In</a></li>|
+                    <li><a href="{% url 'article_reviewer:sign_up' %}">Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div>
+        {% block body_block %}
+        {% endblock %}
+    </div>
+    </body>
+</html>
