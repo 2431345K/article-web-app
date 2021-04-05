@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 
@@ -26,11 +27,11 @@ class Category(models.Model):
 class Article(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)  ##links to category
 
-    url = models.URLField(max_length=100, unique=True)
+    url = models.URLField(max_length=5000, unique=True)
     picture = models.ImageField(upload_to='article_images', blank=True)  ##define more about image
     author = models.CharField(max_length=30)
-    averageRating = models.IntegerField(default=None)
-    reviews = models.CharField(max_length=100)
+    averageRating = models.IntegerField(default=None, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    reviews = models.CharField(max_length=100, blank=True)
 
     title = models.CharField(max_length=128)
 
