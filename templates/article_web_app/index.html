@@ -4,7 +4,7 @@
 {% block title_block %}
     Article Reviewer
 {% endblock %}
-
+<link rel="stylesheet" type="text/css" href="{% static 'CSS/index.css' %}">
 {% block body_block %}
 
     <div>
@@ -24,7 +24,7 @@
     <h2>The Most Popular Articles</h2>
     <hr/>
 
-         <div>
+         <div class="popular">
             {% if articles %}
             <ul>
                 {% for article in articles %}
