@@ -20,6 +20,7 @@ def add_article(cat, title, url, picture, author="Unknown", AvgRating=5, Review=
     A.url = url
     A.save()
     return A
+    
 
 
 ##populate fuction 
@@ -30,18 +31,18 @@ def populate():
 
     sports_articles = [{'title': 'Ngannou new champ',
                         'url': 'https://www.espn.com/mma/story/_/id/31149463/ufc-260-francis-ngannou-won-ufc-heavyweight-championship-jon-jones-superfight-awaits',
-                        'author': 'ESPN', 'picture': 'article_images/elton.png'}]
+                        'author': 'ESPN', 'picture': 'article_images/ngannou.png'}]
     history_articles = [{'title': 'The Man Who Saved Elton Johns Life',
                          'url': 'https://www.onthisday.com/articles/the-man-who-saved-elton-johns-life',
                          'author': 'Ray Setterfield', 'picture': 'article_images/elton.png'}]
     music_articles = [{'title': 'ticketmaster sued ', 'url': 'https://www.billboard.com/hub/legal-and-management/',
-                       'author': 'Dave Brooks', 'picture': 'article_images/elton.png'},
+                       'author': 'Dave Brooks', 'picture': 'article_images/ticketmaster.png'},
                       {'title': 'Ariana Grande Transforms Into a Robot For Futuristic 34+35',
                        'url': 'https://www.billboard.com/video/ariana-grande-transforms-into-a-robot-for-futuristic-3435-music-video-billboard-news',
-                       'author': 'BillBoard News', 'picture': 'article_images/elton.png'}]
+                       'author': 'BillBoard News', 'picture': 'article_images/arianarobot.png'}]
     film_articles = [{'title': 'justice league',
                       'url': 'https://observer.com/2021/04/justice-league-hbo-max-ratings-viewership-subscribers-netflix-disneyplus-amazon/',
-                      'author': 'Observer', 'picture': 'article_images/elton.png'}]
+                      'author': 'Observer', 'picture': 'article_images/justiceleague.png'}]
 
     # cartegories
     cats = {'History': {'articles': history_articles}, 'Music': {'articles': music_articles},
