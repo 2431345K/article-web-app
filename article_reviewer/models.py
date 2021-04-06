@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from django.core.validators import MaxValueValidator, MinValueValidator
+import datetime
+import uuid
 
 # Create your models here.
 
@@ -52,10 +54,10 @@ class Article(models.Model):
 class Review(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)  # think this links it to article name
 
-    commentID = models.IntegerField(max_length=None, unique=True)
+    commentID = models.IntegerField(max_length=None, unique=True, default=uuid.uuid4)
     rating = models.IntegerField(default=3, validators=[MinValueValidator(1), MaxValueValidator(5)])
     author = models.CharField(max_length=30)
-    date = models.DateField()
+    date = models.DateField(default=datetime.date.today())
     comment = models.CharField(max_length=280)
 
     def __str__(self):

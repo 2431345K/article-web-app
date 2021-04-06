@@ -145,22 +145,29 @@ def add_article(request):
     return render(request, 'article_web_app/add_article.html', context=context_dict)
 
 
-def make_rating(request):
+def make_rating(request, article_name_slug):
 
     form = ReviewForm()
     context_dict = {'review_form': form}
+    article = Article.objects.get(slug=article_name_slug)
+    context_dict['article'] = article
 
     if request.method == 'POST':
-
         form = ReviewForm(request.POST)
 
         if form.is_valid():
-            review = form.save()
+            comment = request.POST.get('comment')
+            rating = request.POST.get('rating')
+            print(rating)
+            print('aaaaa')
+            review = Review.objects.create(article = article, author = request.user.username, comment = comment, rating = rating)
             review.save()
+
             review.article.totalRating = review.article.totalRating + review.rating
             review.article.amountOfRatings = review.article.amountOfRatings + 1
             review.article.averageRating = review.article.amountOfRatings/review.article.totalRating
-            return render(request, 'article_web_app/article.html', context=context_dict)
+            return redirect(reverse('article_reviewer:show_article', kwargs={'slug:article_name_slug' : article_name_slug}))
         else:
             print(form.errors)
+
     return render(request, 'article_web_app/review.html', context=context_dict)

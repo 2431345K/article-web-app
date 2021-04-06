@@ -7,9 +7,9 @@
 
 {% block body_block %}
     <h1>Leave a comment and a Rating</h1>
-    <form id="review_form" method="post" action="{% url 'article_reviewer:review' %}">
+    <form id="review_form" method="post" action="{% url 'article_reviewer:review' article.slug%}">
         {% csrf_token %}
-        comment: <input type="text" name="Comment" value="" size="280" />
+        {{ review_form.as_p }}
     <input type="submit" value="Submit" />
 	
 	<p></p>
@@ -23,7 +23,7 @@
 </form>
 <script>
 function myFunction() {
-    window.location="{% url 'article_reviewer:review' %}"
+    window.location="{% url 'article_reviewer:review' article.slug%}"
 }
 </script>
 <script>

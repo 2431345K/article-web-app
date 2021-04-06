@@ -31,7 +31,7 @@
 
 <script>
 function myFunction() {
-    window.location="{% url 'article_reviewer:review' %}"
+    window.location="{% url 'article_reviewer:review' article.slug%}"
 }
 </script>
 <script>
