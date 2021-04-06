@@ -12,8 +12,8 @@
         <hr>
         <ul>
             {% for category in categories %}
-                <br><a href="{% url 'article_reviewer:show_category' category.slug %}">{{ category.name }}</a></br>
-                <li><img src="{{ MEDIA_URL }}{{ category.picture }}" width="100" height="100"/></li>
+                <br><a style="display: inline; margin: 0 50%;" href="{% url 'article_reviewer:show_category' category.slug %}">{{ category.name }}</a></br>
+                <li><img style="display: inline; margin: 0 50%;" src="{{ MEDIA_URL }}{{ category.picture }}" width="100" height="100"/></li>
             {% endfor %}
         </ul>
 {#    {% else %}#}

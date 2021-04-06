@@ -11,5 +11,96 @@
         {% csrf_token %}
         comment: <input type="text" name="Comment" value="" size="280" />
     <input type="submit" value="Submit" />
+	
+	<p></p>
+	
+	<img onclick="changeImage1()" style="display: inline; margin: 0 5px;" src="{% static "images/emptystar.png" %}" id="star1" width="50" height="50">
+	<img onclick="changeImage2()" style="display: inline; margin: 0 5px;" src="{% static "images/emptystar.png" %}" id="star2" width="50" height="50">
+	<img onclick="changeImage3()" style="display: inline; margin: 0 5px;" src="{% static "images/emptystar.png" %}" id="star3" width="50" height="50">
+	<img onclick="changeImage4()" style="display: inline; margin: 0 5px;" src="{% static "images/emptystar.png" %}" id="star4" width="50" height="50">
+	<img onclick="changeImage5()" style="display: inline; margin: 0 5px;" src="{% static "images/emptystar.png" %}" id="star5" width="50" height="50">
+	
 </form>
+<script>
+function myFunction() {
+    window.location="{% url 'article_reviewer:review' %}"
+}
+</script>
+<script>
+function myFunction2() {
+  var rate = prompt("Please enter a rating： ");
+}
+</script>
+<script>
+function changeImage5(){
+     image = document.getElementById("star5");
+	 image1 = document.getElementById("star4");
+	 image2 = document.getElementById("star3");
+	 image3 = document.getElementById("star2");
+	 image4 = document.getElementById("star1");
+     image1.src = "{% static "images/goldstar.png" %}";
+	 image2.src = "{% static "images/goldstar.png" %}";
+	 image3.src = "{% static "images/goldstar.png" %}";
+	 image4.src = "{% static "images/goldstar.png" %}";
+	 image.src = "{% static "images/goldstar.png" %}";
+	 var rate =  5;
+  }
+</script>
+<script>
+function changeImage4(){
+     image5 = document.getElementById("star5");
+	 image1 = document.getElementById("star1");
+	 image2 = document.getElementById("star2");
+	 image3 = document.getElementById("star3");
+	 image4 = document.getElementById("star4");
+     image1.src = "{% static "images/goldstar.png" %}";
+	 image2.src = "{% static "images/goldstar.png" %}";
+	 image3.src = "{% static "images/goldstar.png" %}";
+	 image4.src = "{% static "images/goldstar.png" %}";
+	 image5.src = "{% static "images/emptystar.png" %}";
+  }
+</script>
+<script>
+function changeImage3(){
+     image5 = document.getElementById("star5");
+	 image1 = document.getElementById("star1");
+	 image2 = document.getElementById("star2");
+	 image3 = document.getElementById("star3");
+	 image4 = document.getElementById("star4");
+     image1.src = "{% static "images/goldstar.png" %}";
+	 image2.src = "{% static "images/goldstar.png" %}";
+	 image3.src = "{% static "images/goldstar.png" %}";
+	 image4.src = "{% static "images/emptystar.png" %}";
+	 image5.src = "{% static "images/emptystar.png" %}";
+  }
+</script>
+<script>
+function changeImage2(){
+     image5 = document.getElementById("star5");
+	 image1 = document.getElementById("star1");
+	 image2 = document.getElementById("star2");
+	 image3 = document.getElementById("star3");
+	 image4 = document.getElementById("star4");
+     image1.src = "{% static "images/goldstar.png" %}";
+	 image2.src = "{% static "images/goldstar.png" %}";
+	 image3.src = "{% static "images/emptystar.png" %}";
+	 image4.src = "{% static "images/emptystar.png" %}";
+	 image5.src = "{% static "images/emptystar.png" %}";
+  }
+</script>
+<script>
+function changeImage1(){
+	 image5 = document.getElementById("star5");
+	 image1 = document.getElementById("star1");
+	 image2 = document.getElementById("star2");
+	 image3 = document.getElementById("star3");
+	 image4 = document.getElementById("star4");
+     image1.src = "{% static "images/goldstar.png" %}";
+	 image2.src = "{% static "images/emptystar.png" %}";
+	 image3.src = "{% static "images/emptystar.png" %}";
+	 image4.src = "{% static "images/emptystar.png" %}";
+	 image5.src = "{% static "images/emptystar.png" %}";
+  }
+</script>
+
 {% endblock %}
