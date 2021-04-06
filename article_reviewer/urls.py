@@ -13,10 +13,10 @@ urlpatterns = [
     path('contact_us/', views.contact_us, name='contact_us'),
     path('login/my_account/', views.my_account, name='my_account'),
     path('category/', views.category, name='category'),
-    path('article/<slug:article_name_slug>', views.show_article, name='show_article'),
+    path('article/<slug:article_name_slug>/', views.show_article, name='show_article'),
     path('category/<slug:category_name_slug>/', views.show_category, name='show_category'),
 
     path('login/my_account/add_article/', views.add_article, name='add_article'),
-    path('article/make_rating', views.make_rating, name='make_rating'),
+    path('article/show_article/make_rating/', views.make_rating, name='review'),
     path('', views.index, name='index'),
 ]
