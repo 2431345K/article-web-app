@@ -1,5 +1,5 @@
 //example
 
-$(document).ready(function() {
+/*$(document).ready(function() {
 alert('Hello, world!');
-});
+});*/
