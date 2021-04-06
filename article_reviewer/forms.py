@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from article_reviewer.models import UserProfile, Article
+from article_reviewer.models import UserProfile, Article, Review
 
 
 class UserForm(forms.ModelForm):
@@ -24,3 +24,10 @@ class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
         fields = ('title', 'category', 'author', 'url', 'picture')
+
+
+class ReviewForm(forms.ModelForm):
+
+    class Meta:
+        model = Review
+        fields = ('article', 'commentID', 'rating', 'author', 'date', 'comment')

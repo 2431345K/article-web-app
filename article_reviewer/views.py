@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from article_reviewer.forms import UserForm, ArticleForm, UserProfileForm
+from article_reviewer.forms import UserForm, ArticleForm, UserProfileForm, ReviewForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
@@ -146,4 +146,21 @@ def add_article(request):
 
 
 def make_rating(request):
-    return HttpResponse("This is make rating page")
+
+    form = ReviewForm()
+    context_dict = {'review_form': form}
+
+    if request.method == 'POST':
+
+        form = ReviewForm(request.POST)
+
+        if form.is_valid():
+            review = form.save()
+            review.save()
+            review.article.totalRating = review.article.totalRating + review.rating
+            review.article.amountOfRatings = review.article.amountOfRatings + 1
+            review.article.averageRating = review.article.amountOfRatings/review.article.totalRating
+            return render(request, 'article_web_app/article.html', context=context_dict)
+        else:
+            print(form.errors)
+    return render(request, 'article_web_app/add_article.html', context=context_dict)

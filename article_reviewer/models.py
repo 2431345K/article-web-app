@@ -32,6 +32,8 @@ class Article(models.Model):
     author = models.CharField(max_length=30)
     averageRating = models.FloatField(default=3, validators=[MinValueValidator(1), MaxValueValidator(5)])
     reviews = models.CharField(max_length=100, blank=True)
+    amountOfRatings = models.IntegerField(default = 0)
+    totalRating = models.IntegerField(default = 0)
 
     title = models.CharField(max_length=128)
     slug = models.SlugField(unique=True)
@@ -57,7 +59,7 @@ class Review(models.Model):
     comment = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.commentID
+        return self.comment
 
 
 # more on image field 

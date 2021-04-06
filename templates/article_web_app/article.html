@@ -22,8 +22,8 @@
     {% if reviews %}
         <ul>
             {% for review in reviews %}
-                <li><Strong>review.author</Strong>:</li>
-                <li>review.comment</li>
+                <br><Strong>{{review.author}} : {{review.rating}}/5</Strong></br>
+                <li>{{review.comment}}</li>
             {% endfor %}
         </ul>
     {% endif %}

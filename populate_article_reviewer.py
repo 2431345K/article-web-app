@@ -14,9 +14,9 @@ def add_cat(name, picture):
     return c
 
 
-def add_article(cat, title, url, picture, author="Unknown", AvgRating=3, Review=""):
+def add_article(cat, title, url, picture, author="Unknown", AvgRating=3, Review="", totalRating=0, AmountOfRatings=0):
     A = Article.objects.get_or_create(category=cat, title=title, url=url, picture=picture, author=author,
-                                      averageRating=AvgRating, reviews=Review)[0]
+                                      averageRating=AvgRating, reviews=Review, totalRating=totalRating, amountOfRatings=AmountOfRatings)[0]
     A.url = url
     A.save()
     return A
