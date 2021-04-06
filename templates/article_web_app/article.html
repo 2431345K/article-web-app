@@ -17,6 +17,7 @@
     <li>Category: {{ article.category }}</li>
     <li>Rating: {{ article.averageRating }} / 5</li>
     <li><button onclick="myFunction()" class="btn btn-primary">Click here to make a comment</button></li>
+	<li><button onclick="myFunction2()" class="btn btn-rate">Click here to rate</button></li>
     <hr>
     <h3>Comments:</h3>
     {% if reviews %}
@@ -30,7 +31,12 @@
 
 <script>
 function myFunction() {
-  var rate = prompt("Please comment：", "Comments...");
+  var comment = prompt("Please comment：", "Comments...");
+}
+</script>
+<script>
+function myFunction2() {
+  var rate = prompt("Please enter a rating： ");
 }
 </script>
 {% endblock %}
