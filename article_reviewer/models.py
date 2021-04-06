@@ -31,7 +31,7 @@ class Article(models.Model):
     picture = models.ImageField(upload_to='article_images', blank=True)  ##define more about image
     author = models.CharField(max_length=30)
     averageRating = models.FloatField(default=3, validators=[MinValueValidator(1), MaxValueValidator(5)])
-    reviews = models.CharField(max_length=100, blank=True)
+    reviews = models.CharField(max_length=280, blank=True)
     amountOfRatings = models.IntegerField(default = 0)
     totalRating = models.IntegerField(default = 0)
 
@@ -53,10 +53,10 @@ class Review(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)  # think this links it to article name
 
     commentID = models.IntegerField(max_length=None, unique=True)
-    rating = models.IntegerField(default=0)
+    rating = models.IntegerField(default=3, validators=[MinValueValidator(1), MaxValueValidator(5)])
     author = models.CharField(max_length=30)
     date = models.DateField()
-    comment = models.CharField(max_length=100)
+    comment = models.CharField(max_length=280)
 
     def __str__(self):
         return self.comment
