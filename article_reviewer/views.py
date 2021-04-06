@@ -163,4 +163,4 @@ def make_rating(request):
             return render(request, 'article_web_app/article.html', context=context_dict)
         else:
             print(form.errors)
-    return render(request, 'article_web_app/add_article.html', context=context_dict)
+    return render(request, 'article_web_app/review.html', context=context_dict)

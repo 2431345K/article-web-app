@@ -16,6 +16,7 @@
     <li>Url: <a href="{{ article.url }}">{{ article.url }}</a></li>
     <li>Category: {{ article.category }}</li>
     <li>Rating: {{ article.averageRating }} / 5</li>
+    <li><a href="{% url 'article_reviewer:review' %}">Leave review</a></li>
     <li><button onclick="myFunction()" class="btn btn-primary">Click here to make a comment</button></li>
 	<li><button onclick="myFunction2()" class="btn btn-rate">Click here to rate</button></li>
 	
@@ -41,7 +42,7 @@
 
 <script>
 function myFunction() {
-  var comment = prompt("Please comment：", "Comments...");
+  <link rel="stylesheet" type="text/css" href="{% static 'CSS/index.css' %}"></link>
 }
 </script>
 <script>

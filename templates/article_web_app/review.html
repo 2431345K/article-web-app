@@ -1,0 +1,15 @@
+{% extends 'article_web_app/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    Article Reviewer
+{% endblock %}
+
+{% block body_block %}
+    <h1>Leave a comment and a Rating</h1>
+    <form id="review_form" method="post" action="{% url 'article_reviewer:review' %}">
+        {% csrf_token %}
+        comment: <input type="text" name="Comment" value="" size="280" />
+    <input type="submit" value="Sign In" />
+</form>
+{% endblock %}
