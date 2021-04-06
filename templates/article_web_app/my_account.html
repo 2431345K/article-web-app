@@ -7,7 +7,7 @@
 
 {% block body_block %}
     <h1>My Account Profile</h1>
-    <img>
+    <div>
         <h3>Username: {{ user.username }}</h3>
         <h3>Email : {{ user.email }}</h3>
         <img src="{{ MEDIA_URL }}{{ user_profile.picture }}" width="200" height="200"/></br>

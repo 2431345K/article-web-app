@@ -5,9 +5,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
-
-# Create your views here.
-from article_reviewer.models import UserProfile, Article, Category
+from article_reviewer.models import UserProfile, Article, Category, Review
 
 
 def index(request):
@@ -30,10 +28,8 @@ def category(request):
 
 
 def show_category(request, category_name_slug):
-
     context_dict = {}
     try:
-
         category = Category.objects.get(slug=category_name_slug)
         articles = Article.objects.filter(category=category)
 
@@ -42,8 +38,19 @@ def show_category(request, category_name_slug):
     except Category.DoesNotExist:
         context_dict['category'] = None
         context_dict['articles'] = None
-
     return render(request, 'article_web_app/category.html', context=context_dict)
+
+
+def show_article(request, article_name_slug):
+    context_dict = {}
+    try:
+        article = Article.objects.get(slug=article_name_slug)
+        reviews = Review.objects.filter(article=article)
+        context_dict['article'] = article
+        context_dict['reviews'] = reviews
+    except Category.DoesNotExist:
+        context_dict['article'] = None
+    return render(request, 'article_web_app/article.html', context=context_dict)
 
 
 def contact_us(request):
@@ -116,31 +123,21 @@ def my_account(request):
 
 
 @login_required
-def article(request):
-    return HttpResponse("This is article page")
-
-
-@login_required
 def add_article(request):
 
     form = ArticleForm()
     context_dict = {'article_form': form}
 
     if request.method == 'POST':
-        # using the forms we grab information from data
+
         form = ArticleForm(request.POST)
 
-        # if both forms are valid, user is saved
         if form.is_valid():
             article = form.save(commit=False)
-
             if 'picture' in request.FILES:
                 article.picture = request.FILES['picture']
-
             article.save()
-            # adding profile picture if one was given
             return redirect(reverse('article_reviewer:my_account'))
-        # else prints errors
         else:
             print(form.errors)
 

@@ -14,7 +14,6 @@ class Category(models.Model):
         self.slug = slugify(self.name)
         super(Category, self).save(*args, **kwargs)
 
-
     class Meta:
         verbose_name_plural = 'Categories'
 
@@ -34,9 +33,15 @@ class Article(models.Model):
     reviews = models.CharField(max_length=100, blank=True)
 
     title = models.CharField(max_length=128)
+    slug = models.SlugField(unique=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Article, self).save(*args, **kwargs)
 
     # views = models.IntegerField(default=0)
     def __str__(self):
+
         return self.url
 
 

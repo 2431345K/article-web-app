@@ -28,7 +28,7 @@
             {% if articles %}
             <ul>
                 {% for article in articles %}
-                    <li><a href="{{ article.url }}">{{ article.title }}</a></li>
+                    <li><a href="{% url 'article_reviewer:show_article' article.slug%}">{{ article.title }}</a></li>
                     <li><img src="{{ MEDIA_URL }}{{ article.picture }}" alt="{{ article.author }}"  width="100" height="100"/></li>
                 {% endfor %}
             </ul>
