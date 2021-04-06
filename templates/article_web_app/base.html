@@ -13,34 +13,38 @@
     </head>
 
     <body>
-    <div class="container">
-        <div class="menu">
+        
+    <div class ="container">
+        <div class="left">
             <ul>
                 <li class="logo"> <a href="{% url 'article_reviewer:index' %}"><img src="{% static 'images/article-logo.png' %}"></a></li>
                 <li class="heading"><h1><a href="{% url 'article_reviewer:index' %}">Article Reviewer</a></h1></li>
-                <li><a href="{% url 'article_reviewer:category' %}">Categories</a></li>|
+            </ul>
+        </div>
+        
+        <div class="right">
+            <ul>
+                 <li><a href="{% url 'article_reviewer:category' %}">Categories</a></li> | 
                 <li><a href="{% url 'article_reviewer:contact_us' %}">Contact Us</a></li>
 
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'article_reviewer:my_account' %}"> {{ user.username }} </a></li>
+                    <li><a href="{% url 'article_reviewer:my_account' %}">   {{ user.username }} </a></li>
                     <li><a href="{% url 'article_reviewer:logout' %}">Logout</a></li>
                 {% else %}
-                    <li><a href="{% url 'article_reviewer:login' %}">Sign In</a></li>|
+                    <li><a href="{% url 'article_reviewer:login' %}">  Sign In</a></li> | 
                     <li><a href="{% url 'article_reviewer:sign_up' %}">Sign Up</a></li>
                 {% endif %}
             </ul>
-        </div>
+        </div>  
     </div>
     <div>
         {% block body_block %}
         {% endblock %}
     </div>
-	
-	
-	<script src="{% static "js/jquery-3.3.1.min.js" %}" crossorigin="anonymous"></script>
-	<script src="{% static "js/article-jquery.js" %}" crossorigin="anonymous"></script>
 
 
-
-    </body>
+    <script src="{% static "js/jquery-3.3.1.min.js" %}" crossorigin="anonymous"></script>
+    <script src="{% static "js/article-jquery.js" %}" crossorigin="anonymous"></script>
+            
+     </body>
 </html>
