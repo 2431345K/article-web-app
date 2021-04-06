@@ -12,7 +12,8 @@
         <hr>
         <ul>
             {% for category in categories %}
-                <li><a href="{% url 'article_reviewer:show_category' category.slug %}">{{ category.name }}</a></li>
+                <br><a href="{% url 'article_reviewer:show_category' category.slug %}">{{ category.name }}</a></br>
+                <li><img src="{{ MEDIA_URL }}{{ category.picture }}" width="100" height="100"/></li>
             {% endfor %}
         </ul>
 {#    {% else %}#}
@@ -24,8 +25,12 @@
     {% if articles %}
     <ul>
         {% for article in articles %}
-            <li><a href="{% url 'article_reviewer:show_article' article.slug%}">{{ article.title }}</a></li>
-            <li><img src="{{ MEDIA_URL }}{{ article.picture }}" alt="{{ article.author }}"  width="100" height="100"/></li>
+            <br><a href="{% url 'article_reviewer:show_article' article.slug%}">{{ article.title }}</a></br>
+            {% if article.picture %}
+                <li><img src="{{ MEDIA_URL }}{{ article.picture }}" alt="{{ article.author }}"  width="100" height="100"/></li>
+            {% else %}
+                <li><img src="{{ MEDIA_URL }}{{ article.category.picture }}" width="100" height="100"/></li>
+            {% endif %}
         {% endfor %}
     </ul>
     {% else %}

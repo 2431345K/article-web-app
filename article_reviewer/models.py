@@ -9,6 +9,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Category(models.Model):
     name = models.CharField(max_length=30, unique=True)
     slug = models.SlugField(unique=True)
+    picture = models.ImageField(upload_to='profile_images', blank=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -26,7 +27,7 @@ class Category(models.Model):
 class Article(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)  ##links to category
 
-    url = models.URLField(max_length=5000, unique=True)
+    url = models.CharField(max_length=5000, unique=True)
     picture = models.ImageField(upload_to='article_images', blank=True)  ##define more about image
     author = models.CharField(max_length=30)
     averageRating = models.FloatField(default=5, validators=[MinValueValidator(1), MaxValueValidator(5)])

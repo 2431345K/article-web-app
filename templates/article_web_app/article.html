@@ -7,7 +7,12 @@
 
 {% block body_block %}
     <h2>{{ article.title }}</h2>
-    <img src="{{ MEDIA_URL }}{{ article.picture }}" alt="{{ article.author }}"  width="400" height="300"/>
+
+    {% if article.picture %}
+        <li><img src="{{ MEDIA_URL }}{{ article.picture }}" alt="{{ article.author }}"  width="400" height="400"/></li>
+    {% else %}
+        <li><img src="{{ MEDIA_URL }}{{ article.category.picture }}" width="400" height="400"/></li>
+    {% endif %}
     <li>Url: <a href="{{ article.url }}">{{ article.url }}</a></li>
     <li>Category: {{ article.category }}</li>
     <li>Rating: {{ article.averageRating }} / 5</li>

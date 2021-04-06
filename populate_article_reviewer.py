@@ -8,13 +8,13 @@ django.setup()
 from article_reviewer.models import Category, Article, Review, User, UserProfile
 
 
-def add_cat(name):
-    c = Category.objects.get_or_create(name=name)[0]
+def add_cat(name, picture):
+    c = Category.objects.get_or_create(name=name, picture=picture)[0]
     c.save()
     return c
 
 
-def add_article(cat, title, url, picture, author="Unknown", AvgRating=5, Review=""):
+def add_article(cat, title, url, picture, author="Unknown", AvgRating=3, Review=""):
     A = Article.objects.get_or_create(category=cat, title=title, url=url, picture=picture, author=author,
                                       averageRating=AvgRating, reviews=Review)[0]
     A.url = url
@@ -43,13 +43,22 @@ def populate():
     film_articles = [{'title': 'justice league',
                       'url': 'https://observer.com/2021/04/justice-league-hbo-max-ratings-viewership-subscribers-netflix-disneyplus-amazon/',
                       'author': 'Observer', 'picture': 'article_images/justiceleague.png'}]
+    politics_articles = []
+    science_articles = []
+    nature_articles = []
+    news_articles = []
+    celebrity_articles = []
+    health_articles = []
 
     # cartegories
-    cats = {'History': {'articles': history_articles}, 'Music': {'articles': music_articles},
-            'sport': {'articles': sports_articles}, 'film': {'articles': film_articles}}
+    cats = {'History': {'articles': history_articles, 'picture': 'category_images/HistoryImage.png'}, 'Music': {'articles': music_articles, 'picture': 'category_images/MusicImage.jpg'},
+            'Sport': {'articles': sports_articles, 'picture': 'category_images/SportImage.jpg'}, 'Film': {'articles': film_articles, 'picture': 'category_images/FilmImage.jpg'}, 
+            'Politics' : {'articles': politics_articles, 'picture': 'category_images/PoliticsImage.jpg'}, 'Science' : {'articles': science_articles, 'picture': 'category_images/ScienceImage.jpg'},
+            'Nature' : {'articles': nature_articles, 'picture': 'category_images/NatureImage.jpg'}, 'News' : {'articles': news_articles, 'picture': 'category_images/NewsImage.jpg'}, 
+            'Celebrity' : {'articles': celebrity_articles, 'picture': 'category_images/CelebrityImage.jpeg'}, 'Health' : {'articles' : health_articles, 'picture' : 'category_images/HealthImage.jpg'}}
 
     for cat, cat_data in cats.items():
-        c = add_cat(cat)
+        c = add_cat(cat, cat_data['picture'])
         for p in cat_data['articles']:
             add_article(c, p['title'], p['url'], p['picture'], p['author'])
 

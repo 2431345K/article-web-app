@@ -84,11 +84,11 @@ class PopulationScriptTests(TestCase):
         categories_len = len(categories)
         categories_strs = list(map(str, categories))
 
-        self.assertEqual(categories_len, 4, f"{FAILURE_HEADER}Expecting 4 categories to be created from the populate_article_reviewer module; found {categories_len}.{FAILURE_FOOTER}")
+        self.assertEqual(categories_len, 10, f"{FAILURE_HEADER}Expecting 9 categories to be created from the populate_article_reviewer module; found {categories_len}.{FAILURE_FOOTER}")
         self.assertTrue('History' in categories_strs, f"{FAILURE_HEADER}The category 'History' was expected but not created by populate_article_reviewer.{FAILURE_FOOTER}")
         self.assertTrue('Music' in categories_strs, f"{FAILURE_HEADER}The category 'Music' was expected but not created by populate_article_reviewer.{FAILURE_FOOTER}")
-        self.assertTrue('sport' in categories_strs, f"{FAILURE_HEADER}The category 'sport' was expected but not created by populate_article_reviewer.{FAILURE_FOOTER}")
-        self.assertTrue('film' in categories_strs, f"{FAILURE_HEADER}The category 'film' was expected but not created by populate_article_reviewer.{FAILURE_FOOTER}")
+        self.assertTrue('Sport' in categories_strs, f"{FAILURE_HEADER}The category 'Sport' was expected but not created by populate_article_reviewer.{FAILURE_FOOTER}")
+        self.assertTrue('Film' in categories_strs, f"{FAILURE_HEADER}The category 'Film' was expected but not created by populate_article_reviewer.{FAILURE_FOOTER}")
     
     def test_articles(self):
         
