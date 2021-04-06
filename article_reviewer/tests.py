@@ -126,3 +126,66 @@ class InterfaceTests(TestCase):
         
         self.assertTrue('Categories' in response_body, f"{FAILURE_HEADER}The Category model was not found in the admin interface.{FAILURE_FOOTER}")
         self.assertTrue('Articles' in response_body, f"{FAILURE_HEADER}The Article model was not found in the admin interface.{FAILURE_FOOTER}")
+
+
+class ViewsTests(TestCase):
+    def setUp(self):
+        self.views_module = importlib.import_module('article_reviewer.views')
+        self.views_module_listing = dir(self.views_module)
+        
+
+    def test_view_existance(self):
+        name_exists = 'index' in self.views_module_listing
+        is_callable = callable(self.views_module.index)
+        self.assertTrue(name_exists, f"{FAILURE_HEADER}The index() view for Article reviewer does not exist.{FAILURE_FOOTER}")
+        self.assertTrue(is_callable, f"{FAILURE_HEADER}Index view doesn't seem to be a function!{FAILURE_FOOTER}")
+
+        name_exists = 'category' in self.views_module_listing
+        is_callable = callable(self.views_module.category)
+        self.assertTrue(name_exists, f"{FAILURE_HEADER}The category() view for Article reviewer does not exist.{FAILURE_FOOTER}")
+        self.assertTrue(is_callable, f"{FAILURE_HEADER}category view doesn't seem to be a function!{FAILURE_FOOTER}")
+
+        name_exists = 'show_category' in self.views_module_listing
+        is_callable = callable(self.views_module.show_category)
+        self.assertTrue(name_exists, f"{FAILURE_HEADER}The show_category() view for Article reviewer does not exist.{FAILURE_FOOTER}")
+        self.assertTrue(is_callable, f"{FAILURE_HEADER}show_category view doesn't seem to be a function!{FAILURE_FOOTER}")
+        
+        name_exists = 'show_article' in self.views_module_listing
+        is_callable = callable(self.views_module.show_article)
+        self.assertTrue(name_exists, f"{FAILURE_HEADER}The show_article() view for Article reviewer does not exist.{FAILURE_FOOTER}")
+        self.assertTrue(is_callable, f"{FAILURE_HEADER}show_article view doesn't seem to be a function!{FAILURE_FOOTER}")
+
+        name_exists = 'contact_us' in self.views_module_listing
+        is_callable = callable(self.views_module.contact_us)
+        self.assertTrue(name_exists, f"{FAILURE_HEADER}The contact_us() view for Article reviewer does not exist.{FAILURE_FOOTER}")
+        self.assertTrue(is_callable, f"{FAILURE_HEADER}contact_us view doesn't seem to be a function!{FAILURE_FOOTER}")
+
+        name_exists = 'sign_up' in self.views_module_listing
+        is_callable = callable(self.views_module.sign_up)
+        self.assertTrue(name_exists, f"{FAILURE_HEADER}The sign_up() view for Article reviewer does not exist.{FAILURE_FOOTER}")
+        self.assertTrue(is_callable, f"{FAILURE_HEADER}sign_up view doesn't seem to be a function!{FAILURE_FOOTER}")
+
+        name_exists = 'user_login' in self.views_module_listing
+        is_callable = callable(self.views_module.user_login)
+        self.assertTrue(name_exists, f"{FAILURE_HEADER}The user_login() view for Article reviewer does not exist.{FAILURE_FOOTER}")
+        self.assertTrue(is_callable, f"{FAILURE_HEADER}user_login view doesn't seem to be a function!{FAILURE_FOOTER}")
+
+        name_exists = 'user_logout' in self.views_module_listing
+        is_callable = callable(self.views_module.user_logout)
+        self.assertTrue(name_exists, f"{FAILURE_HEADER}The user_logout() view for Article reviewer does not exist.{FAILURE_FOOTER}")
+        self.assertTrue(is_callable, f"{FAILURE_HEADER}user_logout view doesn't seem to be a function!{FAILURE_FOOTER}")
+
+        name_exists = 'my_account' in self.views_module_listing
+        is_callable = callable(self.views_module.my_account)
+        self.assertTrue(name_exists, f"{FAILURE_HEADER}The my_account() view for Article reviewer does not exist.{FAILURE_FOOTER}")
+        self.assertTrue(is_callable, f"{FAILURE_HEADER}my_account view doesn't seem to be a function!{FAILURE_FOOTER}")
+
+        name_exists = 'add_article' in self.views_module_listing
+        is_callable = callable(self.views_module.add_article)
+        self.assertTrue(name_exists, f"{FAILURE_HEADER}The add_article() view for Article reviewer does not exist.{FAILURE_FOOTER}")
+        self.assertTrue(is_callable, f"{FAILURE_HEADER}add_article view doesn't seem to be a function!{FAILURE_FOOTER}")
+
+        name_exists = 'make_rating' in self.views_module_listing
+        is_callable = callable(self.views_module.make_rating)
+        self.assertTrue(name_exists, f"{FAILURE_HEADER}The make_rating() view for Article reviewer does not exist.{FAILURE_FOOTER}")
+        self.assertTrue(is_callable, f"{FAILURE_HEADER}make_rating view doesn't seem to be a function!{FAILURE_FOOTER}")
