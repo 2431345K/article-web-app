@@ -10,6 +10,6 @@
     <form id="review_form" method="post" action="{% url 'article_reviewer:review' %}">
         {% csrf_token %}
         comment: <input type="text" name="Comment" value="" size="280" />
-    <input type="submit" value="Sign In" />
+    <input type="submit" value="Submit" />
 </form>
 {% endblock %}
