@@ -18,6 +18,16 @@
     <li>Rating: {{ article.averageRating }} / 5</li>
     <li><button onclick="myFunction()" class="btn btn-primary">Click here to make a comment</button></li>
 	<li><button onclick="myFunction2()" class="btn btn-rate">Click here to rate</button></li>
+	
+	
+	<img style="display: inline; margin: 0 5px;" src="{% static "images/emptystar.png" %}" id="star1" width="50" height="50">
+	<img style="display: inline; margin: 0 5px;" src="{% static "images/emptystar.png" %}" id="star2" width="50" height="50">
+	<img style="display: inline; margin: 0 5px;" src="{% static "images/emptystar.png" %}" id="star3" width="50" height="50">
+	<img style="display: inline; margin: 0 5px;" src="{% static "images/emptystar.png" %}" id="star4" width="50" height="50">
+	<img style="display: inline; margin: 0 5px;" src="{% static "images/emptystar.png" %}" id="star5" width="50" height="50">
+
+	
+	
     <hr>
     <h3>Comments:</h3>
     {% if reviews %}

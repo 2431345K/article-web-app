@@ -35,3 +35,7 @@
     margin-right: 48px;
 }
 
+#stars { display: inline-block; 
+		width:50px;
+}
+
