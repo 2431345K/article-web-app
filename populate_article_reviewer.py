@@ -27,7 +27,7 @@ def add_article(cat, title, url, picture, author="Unknown", AvgRating=3, Review=
 def populate():
     ##
     ##img src="C:\Users\user\Workspace\new_project\article-web-app\static\article.png" alt="Picture of article" />
-    ##
+    ##{'title': '','url': '','author': '', 'picture': ''}
 
     sports_articles = [{'title': 'Ngannou new champ',
                         'url': 'https://www.espn.com/mma/story/_/id/31149463/ufc-260-francis-ngannou-won-ufc-heavyweight-championship-jon-jones-superfight-awaits',
@@ -44,11 +44,12 @@ def populate():
                       'url': 'https://observer.com/2021/04/justice-league-hbo-max-ratings-viewership-subscribers-netflix-disneyplus-amazon/',
                       'author': 'Observer', 'picture': 'article_images/justiceleague.png'}]
     politics_articles = []
-    science_articles = []
-    nature_articles = []
+    science_articles = [{'title': 'Elon Musk’s SpaceX becomes first private company to launch a reused rocket ','url': 'https://www.cnbc.com/2017/12/15/elon-musks-spacex-becomes-first-to-launch-reused-rocket-on-a-nasa-mission.html','author': 'Michael Sheetz', 'picture': 'article_images/elon.png'}]
+    nature_articles = [{'title': 'Octopus Facts','url': 'https://www.livescience.com/55478-octopus-facts.html#:~:text=Octopuses%20are%20ocean%20creatures%20that%20are%20most%20famous,quite%20intelligent%20and%20have%20been%20observed%20using%20tools.','author': ' Alina Bradford', 'picture': 'article_images/octopus.png'}]
     news_articles = []
-    celebrity_articles = []
-    health_articles = []
+    celebrity_articles = [{'title': 'Laura Whitmore unveils jaw-dropping party trick','url': 'https://www.mirror.co.uk/3am/celebrity-news/laura-whitmore-unveils-jaw-dropping-23862112','author': 'Tamara Davison', 'picture': 'article_images/partytrick.png'}]
+    health_articles = [{'title': 'The 14 Healthiest Vegetables on Earth','url': 'https://www.healthline.com/nutrition/14-healthiest-vegetables-on-earth','author': ' Rachael Link', 'picture': 'article_images/healthline.png'},
+    {'title': '20 Healthy and Energizing Snacks','url': 'https://www.healthline.com/nutrition/healthy-energizing-snacks#9.-Premade-guacamole-and-plantain-chips','author': ' Jillian Kubala', 'picture': 'article_images/healthysnacks.png'}]
 
     # cartegories
     cats = {'History': {'articles': history_articles, 'picture': 'category_images/HistoryImage.png'}, 'Music': {'articles': music_articles, 'picture': 'category_images/MusicImage.jpg'},
