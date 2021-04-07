@@ -18,15 +18,15 @@
     <li>Rating: {{ article.averageRating | floatformat:1 }} / 5</li>
     
     {% if user.is_authenticated %}
-    <br><button onclick="reviewFunction()" class="btn btn-primary">Click here to make a Review</button></br>
+    <br><button onclick="reviewFunction()" class="btn btn-primary"><p style= "font-size:x-large">Click here to make a Review</p></button></br>
     {% endif %}	
     <hr>
     <h3>Comments:</h3>
     {% if reviews %}
         <ul>
             {% for review in reviews %}
-                <br>{{review.date}}<Strong> : {{review.author}} : {{review.rating}}/5</Strong></br>
-                <li>{{review.comment}}</li>
+                <p style= "font-size:large"><br>{{review.date}}<Strong> : {{review.author}} : {{review.rating}}/5</Strong></br></p>
+                <li><p style= font-style:italic >{{review.comment}}</p></li>
             {% endfor %}
         </ul>
     {% endif %}
