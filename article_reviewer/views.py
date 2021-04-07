@@ -138,32 +138,8 @@ def add_article(request):
 
         if form.is_valid():
             article = form.save(commit=False)
-            cat = int(request.POST.get('category'))
-            if cat == 1:
-                category = Category.objects.get(name='History')
-            elif cat == 2:
-                category = Category.objects.get(name='Music')
-            elif cat == 3:
-                category = Category.objects.get(name='Sport')
-            elif cat == 4:
-                category = Category.objects.get(name='Film')
-            elif cat == 5:
-                category = Category.objects.get(name='Politics')
-            elif cat == 6:
-                category = Category.objects.get(name='Science')
-            elif cat == 7:
-                category = Category.objects.get(name='Nature')
-            elif cat == 8:
-                category = Category.objects.get(name='News')
-            elif cat == 9:
-                category = Category.objects.get(name='Celebrity')
-            else:
-                category = Category.objects.get(name='Health')
-            
             if 'picture' in request.FILES:
-                article = Article.objects.create(title = request.POST.get('title'),category=category, author=request.POST.get('author'), url=request.POST.get('url'), picture=request.POST.get('picture'))
-            else:
-                article = Article.objects.create(title = request.POST.get('title'), author=request.POST.get('author'), category=category, url=request.POST.get('url'))
+                article.picture = request.FILES['picture']
             article.save()
             return redirect(reverse('article_reviewer:my_account'))
         else:

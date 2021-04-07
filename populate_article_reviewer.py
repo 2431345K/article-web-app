@@ -13,6 +13,8 @@ def add_cat(name, picture):
     c.save()
     return c
 
+def add_review(comment, author, rating, article):
+    r = Review.objects.create(comment=comment, author=author, rating=rating)
 
 def add_article(cat, title, url, picture, author="Unknown", AvgRating=3, Review="", totalRating=0, AmountOfRatings=0):
     A = Article.objects.get_or_create(category=cat, title=title, url=url, picture=picture, author=author,
@@ -58,10 +60,14 @@ def populate():
             'Nature' : {'articles': nature_articles, 'picture': 'category_images/NatureImage.jpg'}, 'News' : {'articles': news_articles, 'picture': 'category_images/NewsImage.jpg'}, 
             'Celebrity' : {'articles': celebrity_articles, 'picture': 'category_images/CelebrityImage.jpeg'}, 'Health' : {'articles' : health_articles, 'picture' : 'category_images/HealthImage.jpg'}}
 
+    reviews = {'https://www.onthisday.com/articles/the-man-who-saved-elton-johns-life' : {'comment':'Great Read!', 'rating':4, ,'author':'JamesC'},
+            {'comment':'Such an Interesting Article.', 'rating':4, ,'author':'MaryR'},{'comment':'Meh', 'rating':2, ,'author':'MikeB'}}
+
     for cat, cat_data in cats.items():
         c = add_cat(cat, cat_data['picture'])
         for p in cat_data['articles']:
             add_article(c, p['title'], p['url'], p['picture'], p['author'])
+
 
 
     # Print out the categories we have added.
