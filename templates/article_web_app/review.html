@@ -11,8 +11,8 @@
     <form id="review_form" method="post" action="{% url 'article_reviewer:review' article.slug%}">
         {% csrf_token %}
         {{ review_form.as_p }}
-        comment: <input type="text" name="Comment" value="" size="280" />
     <input type="submit" value="Submit" />
+<<<<<<< HEAD
 	
 </form>
 <script>
@@ -26,4 +26,7 @@ function myFunction2() {
 }
 </script>
 
+=======
+</form>
+>>>>>>> e4e52a38ed8d488c61ea3a25a5850bfeba580770
 {% endblock %}
