@@ -9,9 +9,9 @@
     <h2>{{ article.title }}</h2>
 
     {% if article.picture %}
-        <li><img src="{{ MEDIA_URL }}{{ article.picture }}" alt="{{ article.author }}"  width="400" height="400"/></li>
+        <li><a href="{{ article.url }}"><img src="{{ MEDIA_URL }}{{ article.picture }}" alt="{{ article.author }}"  width="400" height="400"/></li></a>
     {% else %}
-        <li><img src="{{ MEDIA_URL }}{{ article.category.picture }}" width="400" height="400"/></li>
+        <li><a href="{{ article.url }}"><img src="{{ MEDIA_URL }}{{ article.category.picture }}" width="400" height="400"/></li></a>
     {% endif %}
     <li>Url: <a href="{{ article.url }}">{{ article.url }}</a></li>
     <li>Category: {{ article.category }}</li>
