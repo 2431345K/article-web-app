@@ -10,7 +10,7 @@ from article_reviewer.models import UserProfile, Article, Category, Review
 
 def index(request):
     category_list = Category.objects.all()
-    article_list = Article.objects.order_by('-averageRating')[:10]
+    article_list = Article.objects.order_by('-averageRating')
 
     context_dict = {}
     context_dict['categories'] = category_list
@@ -21,7 +21,7 @@ def index(request):
 
 def category(request):
     category_list = Category.objects.all()
-    article_list = Article.objects.order_by('-averageRating')[:10]
+    article_list = Article.objects.order_by('-averageRating')
 
     context_dict = {}
     context_dict['categories'] = category_list
@@ -138,8 +138,32 @@ def add_article(request):
 
         if form.is_valid():
             article = form.save(commit=False)
+            cat = int(request.POST.get('category'))
+            if cat == 1:
+                category = Category.objects.get(name='History')
+            elif cat == 2:
+                category = Category.objects.get(name='Music')
+            elif cat == 3:
+                category = Category.objects.get(name='Sport')
+            elif cat == 4:
+                category = Category.objects.get(name='Film')
+            elif cat == 5:
+                category = Category.objects.get(name='Politics')
+            elif cat == 6:
+                category = Category.objects.get(name='Science')
+            elif cat == 7:
+                category = Category.objects.get(name='Nature')
+            elif cat == 8:
+                category = Category.objects.get(name='News')
+            elif cat == 9:
+                category = Category.objects.get(name='Celebrity')
+            else:
+                category = Category.objects.get(name='Health')
+            
             if 'picture' in request.FILES:
-                article.picture = request.FILES['picture']
+                article = Article.objects.create(title = request.POST.get('title'),category=category, author=request.POST.get('author'), url=request.POST.get('url'), picture=request.POST.get('picture'))
+            else:
+                article = Article.objects.create(title = request.POST.get('title'), author=request.POST.get('author'), category=category, url=request.POST.get('url'))
             article.save()
             return redirect(reverse('article_reviewer:my_account'))
         else:
