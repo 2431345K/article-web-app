@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from django.core.validators import MaxValueValidator, MinValueValidator
+import datetime
+import uuid
 
 # Create your models here.
 
@@ -47,32 +49,22 @@ class Article(models.Model):
 
         return self.url
 
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
-    ##website = models.URLField(blank=True)
-    picture = models.ImageField(upload_to='profile_images', blank=True)
-    author = models.BooleanField()
-
-    def __str__(self):
-        return self.user.username
-
 
 # review page - what should it return, foreign keys and max length of raring ?
 class Review(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)  # think this links it to article name
-    author = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
-    # commentID = models.IntegerField(max_length=None, unique=True)
+    commentID = models.CharField(max_length=64, unique=True, default=uuid.uuid4)
     rating = models.IntegerField(default=3, validators=[MinValueValidator(1), MaxValueValidator(5)])
-
-    date = models.DateField(auto_now_add=True)
+    author = models.CharField(max_length=30)
+    date = models.DateField(default=datetime.date.today())
     comment = models.CharField(max_length=280)
 
     def __str__(self):
         return self.comment
 
 
-# more on image field 
+# more on image field
 # class below should it be included
 # class User (models.Model):
 #    username =  models.CharField(max_length=30, unique=True)
@@ -84,4 +76,11 @@ class Review(models.Model):
 #     return self.username
 ##
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
+    ##website = models.URLField(blank=True)
+    picture = models.ImageField(upload_to='profile_images', blank=True)
+    author = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.user.username

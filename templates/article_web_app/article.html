@@ -9,38 +9,32 @@
     <h2>{{ article.title }}</h2>
 
     {% if article.picture %}
-        <li><img src="{{ MEDIA_URL }}{{ article.picture }}" alt="{{ article.author }}"  width="400" height="400"/></li>
+        <li><a href="{{ article.url }}"><img src="{{ MEDIA_URL }}{{ article.picture }}" alt="{{ article.author }}"  width="400" height="400"/></li></a>
     {% else %}
-        <li><img src="{{ MEDIA_URL }}{{ article.category.picture }}" width="400" height="400"/></li>
+        <li><a href="{{ article.url }}"><img src="{{ MEDIA_URL }}{{ article.category.picture }}" width="400" height="400"/></li></a>
     {% endif %}
     <li>Url: <a href="{{ article.url }}">{{ article.url }}</a></li>
     <li>Category: {{ article.category }}</li>
-    <li>Rating: {{ article.averageRating }} / 5</li>
+    <li>Rating: {{ article.averageRating | floatformat:1 }} / 5</li>
+
     {% if user.is_authenticated %}
-        <br><button onclick="myFunction()" class="btn btn-primary">Click here to make a Review</button></br>
+    <br><button onclick="reviewFunction()" class="btn btn-primary"><p style= "font-size:x-large;font-weight: bold;">Click here to make a Review</p></button></br>
     {% endif %}
     <hr>
     <h3>Comments:</h3>
     {% if reviews %}
         <ul>
             {% for review in reviews %}
-                <br><Strong>{{review.author}} : {{review.rating}}/5</Strong></br>
-                <li>{{review.comment}}</li>
+                <p style= "font-size:large"><br>{{review.date}}<Strong> : {{review.author}} : {{review.rating}}/5</Strong></br></p>
+                <li><p style= font-style:italic >{{review.comment}}</p></li>
             {% endfor %}
         </ul>
     {% endif %}
 
 <script>
-function myFunction() {
-    window.location="{% url 'article_reviewer:review' %}"
+function reviewFunction() {
+    window.location="{% url 'article_reviewer:review' article.slug%}"
 }
 </script>
-<script>
-function myFunction2() {
-  var rate = prompt("Please enter a rating： ");
-}
-</script>
-
-
 
 {% endblock %}

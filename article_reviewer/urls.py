@@ -17,6 +17,6 @@ urlpatterns = [
     path('category/<slug:category_name_slug>/', views.show_category, name='show_category'),
 
     path('login/my_account/add_article/', views.add_article, name='add_article'),
-    path('article/show_article/make_rating/', views.make_rating, name='review'),
+    path('article/<slug:article_name_slug>/make_rating/', views.make_rating, name='review'),
     path('', views.index, name='index'),
 ]
