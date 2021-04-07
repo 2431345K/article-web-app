@@ -9,7 +9,7 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password',)
+        fields = ('username', 'password', )
 
 
 class UserProfileForm(forms.ModelForm):
@@ -20,6 +20,29 @@ class UserProfileForm(forms.ModelForm):
 
 
 class ArticleForm(forms.ModelForm):
+    title = forms.CharField(label ="", widget = forms.Textarea(
+    attrs ={
+        'class':'form-control',
+        'placeholder':'Title',
+        'rows':1,
+        'cols':50
+    }))
+
+    author = forms.CharField(label ="", widget = forms.Textarea(
+    attrs ={
+        'class':'form-control',
+        'placeholder':'Author',
+        'rows':1,
+        'cols':50
+    }))
+
+    url = forms.CharField(label ="", widget = forms.Textarea(
+    attrs ={
+        'class':'form-control',
+        'placeholder':'Article URL',
+        'rows':3,
+        'cols':50
+    }))
 
     class Meta:
         model = Article

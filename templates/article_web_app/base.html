@@ -24,15 +24,15 @@
         
         <div class="right">
             <ul>
-                 <li><a href="{% url 'article_reviewer:category' %}">Categories</a></li> | 
-                <li><a href="{% url 'article_reviewer:contact_us' %}">Contact Us</a></li>
+                <li><button onclick="myFunction5()" class="btn btn-primary"> Categories </button></li> | 
+                <li><button onclick="myFunction6()" class="btn btn-primary"> Contact Us </button></li> |
 
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'article_reviewer:my_account' %}">   {{ user.username }} </a></li>
-                    <li><a href="{% url 'article_reviewer:logout' %}">Logout</a></li>
+                    <li><button onclick="myFunction()" class="btn btn-primary"> {{ user.username }} </button></li> |
+                    <li><button onclick="myFunction2()" class="btn btn-primary"> Logout </button></li>
                 {% else %}
-                    <li><a href="{% url 'article_reviewer:login' %}">  Sign In</a></li> | 
-                    <li><a href="{% url 'article_reviewer:sign_up' %}">Sign Up</a></li>
+                    <li><button onclick="myFunction3()" class="btn btn-primary"> Login </button></li> |
+                    <li><button onclick="myFunction4()" class="btn btn-primary"> Sign Up </button></li> 
                 {% endif %}
             </ul>
         </div>  
@@ -47,4 +47,35 @@
     <script src="{% static "js/article-jquery.js" %}" crossorigin="anonymous"></script>
             
      </body>
+
+     <script>
+        function myFunction() {
+            window.location="{% url 'article_reviewer:my_account' %}"
+        }
+    </script>
+    <script>
+        function myFunction2() {
+            window.location="{% url 'article_reviewer:logout' %}"
+        }
+    </script>
+    <script>
+        function myFunction3() {
+            window.location="{% url 'article_reviewer:login' %}"
+        }
+    </script>
+    <script>
+        function myFunction4() {
+            window.location="{% url 'article_reviewer:sign_up' %}"
+        }
+    </script>
+    <script>
+        function myFunction5() {
+            window.location="{% url 'article_reviewer:category' %}"
+        }
+    </script>
+    <script>
+        function myFunction6() {
+            window.location="{% url 'article_reviewer:contact_us' %}"
+        }
+    </script>
 </html>
