@@ -12,7 +12,7 @@
         {% if categories %}
             <nav>
             {% for category in categories %}
-                <div class="category"><a href="{% url 'article_reviewer:show_category' category.slug %}">{{ category.name }}</a></div>
+                <div class="category"><a>{{ category.name }}</a></div>
                 <div class="popular">
                     {% if articles %}
                         <ul>

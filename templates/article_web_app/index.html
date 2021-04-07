@@ -13,7 +13,7 @@
             <nav>
             {% for category in categories %}
 
-            &ensp;<a style= "font-size:x-large;font-weight: bold;" href="{% url 'article_reviewer:show_category' category.slug %}">{{ category.name }}</a>&ensp;
+            &ensp;<a style= "font-size:x-large;font-weight: bold;" href="{% url 'article_reviewer:category' %}">{{ category.name }}</a>&ensp;
 
             {% endfor %}
             </nav>
