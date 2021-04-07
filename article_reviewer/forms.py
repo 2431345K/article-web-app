@@ -16,7 +16,7 @@ class UserProfileForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ('picture', 'author')
+        fields = ('picture', )
 
 
 class ArticleForm(forms.ModelForm):
@@ -27,6 +27,20 @@ class ArticleForm(forms.ModelForm):
 
 
 class ReviewForm(forms.ModelForm):
+    comment = forms.CharField(label ="", widget = forms.Textarea(
+    attrs ={
+        'class':'form-control',
+        'placeholder':'Comment here !',
+        'rows':4,
+        'cols':50
+    }))
+    rating = forms.IntegerField(label ="", widget = forms.Textarea(
+    attrs ={
+        'class':'form-control',
+        'placeholder':"Rating(1-5)",
+        'rows':1,
+        'cols':50
+    }))
 
     class Meta:
         model = Review

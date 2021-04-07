@@ -15,15 +15,17 @@
     {% endif %}
     <li>Url: <a href="{{ article.url }}">{{ article.url }}</a></li>
     <li>Category: {{ article.category }}</li>
-    <li>Rating: {{ article.averageRating }} / 5</li>
+    <li>Rating: {{ article.averageRating | floatformat:1 }} / 5</li>
     
-    <br><button onclick="myFunction()" class="btn btn-primary">Click here to make a Review</button></br>	
+    {% if user.is_authenticated %}
+    <br><button onclick="myFunction()" class="btn btn-primary">Click here to make a Review</button></br>
+    {% endif %}	
     <hr>
     <h3>Comments:</h3>
     {% if reviews %}
         <ul>
             {% for review in reviews %}
-                <br><Strong>{{review.author}} : {{review.rating}}/5</Strong></br>
+                <br>{{review.date}}<Strong> : {{review.author}} : {{review.rating}}/5</Strong></br>
                 <li>{{review.comment}}</li>
             {% endfor %}
         </ul>
@@ -34,12 +36,5 @@ function myFunction() {
     window.location="{% url 'article_reviewer:review' article.slug%}"
 }
 </script>
-<script>
-function myFunction2() {
-  var rate = prompt("Please enter a rating： ");
-}
-</script>
-
-
 
 {% endblock %}

@@ -54,7 +54,7 @@ class Article(models.Model):
 class Review(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)  # think this links it to article name
 
-    commentID = models.IntegerField(max_length=None, unique=True, default=uuid.uuid4)
+    commentID = models.CharField(max_length=64, unique=True, default=uuid.uuid4)
     rating = models.IntegerField(default=3, validators=[MinValueValidator(1), MaxValueValidator(5)])
     author = models.CharField(max_length=30)
     date = models.DateField(default=datetime.date.today())
@@ -80,7 +80,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
     ##website = models.URLField(blank=True)
     picture = models.ImageField(upload_to='profile_images', blank=True)
-    author = models.BooleanField()
+    author = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username

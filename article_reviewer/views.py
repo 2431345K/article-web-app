@@ -158,15 +158,15 @@ def make_rating(request, article_name_slug):
         if form.is_valid():
             comment = request.POST.get('comment')
             rating = request.POST.get('rating')
-            print(rating)
-            print('aaaaa')
             review = Review.objects.create(article = article, author = request.user.username, comment = comment, rating = rating)
             review.save()
 
-            review.article.totalRating = review.article.totalRating + review.rating
+            review.article.totalRating = review.article.totalRating + int(review.rating)
             review.article.amountOfRatings = review.article.amountOfRatings + 1
-            review.article.averageRating = review.article.amountOfRatings/review.article.totalRating
-            return redirect(reverse('article_reviewer:show_article', kwargs={'slug:article_name_slug' : article_name_slug}))
+            review.article.averageRating = review.article.totalRating/review.article.amountOfRatings
+            review.article.save()
+            #return redirect(reverse('article_reviewer:show_article', kwargs={'slug:article_name_slug' : article_name_slug}))
+            return redirect(reverse('article_reviewer:index'))
         else:
             print(form.errors)
 
