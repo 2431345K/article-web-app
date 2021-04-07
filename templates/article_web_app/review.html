@@ -12,21 +12,4 @@
         {% csrf_token %}
         {{ review_form.as_p }}
     <input type="submit" value="Submit" />
-<<<<<<< HEAD
-	
-</form>
-<script>
-function myFunction() {
-    window.location="{% url 'article_reviewer:review' article.slug%}"
-}
-</script>
-<script>
-function myFunction2() {
-  var rate = prompt("Please enter a rating： ");
-}
-</script>
-
-=======
-</form>
->>>>>>> e4e52a38ed8d488c61ea3a25a5850bfeba580770
 {% endblock %}
