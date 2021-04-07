@@ -24,15 +24,15 @@
         
         <div class="right">
             <ul>
-                <li><button onclick="categoryFunction()" class="btn btn-primary"> <p style= "font-family: Arial, Helvetica, sans-serif;font-size:x-large;font-style:normal">Categories</p></button></li><p style= "font-size:x-large"> | </p>
-                <li><button onclick="contactUsFunction()" class="btn btn-primary"> <p style= "font-family: Arial, Helvetica, sans-serif;font-size:x-large;font-style:normal">Contact Us</p></button></li><p style= "font-size:x-large"> | </p>
+                <li><button onclick="categoryFunction()" class="btn btn-primary"> <p style= "font-family: Arial, Helvetica, sans-serif;font-size:x-large;font-style:normal;font-weight: bold;">Categories</p></button></li><p style= "font-size:x-large"> | </p>
+                <li><button onclick="contactUsFunction()" class="btn btn-primary"> <p style= "font-family: Arial, Helvetica, sans-serif;font-size:x-large;font-style:normal;font-weight: bold;">Contact Us</p></button></li><p style= "font-size:x-large"> | </p>
 
                 {% if user.is_authenticated %}
-                    <li><button onclick="accountPageFunction()" class="btn btn-primary"> <p style= "font-family: Arial, Helvetica, sans-serif;font-size:x-large;font-style:normal">User Profile</p></button></li><p style= "font-size:x-large"> | </p>
-                    <li><button onclick="logoutFunction()" class="btn btn-primary"> <p style= "font-family: Arial, Helvetica, sans-serif;font-size:x-large;font-style:normal">Logout</p></button></li>
+                    <li><button onclick="accountPageFunction()" class="btn btn-primary"> <p style= "font-family: Arial, Helvetica, sans-serif;font-size:x-large;font-style:normal;font-weight: bold;">User Profile</p></button></li><p style= "font-size:x-large"> | </p>
+                    <li><button onclick="logoutFunction()" class="btn btn-primary"> <p style= "font-family: Arial, Helvetica, sans-serif;font-size:x-large;font-style:normal;font-weight: bold;">Logout</p></button></li>
                 {% else %}
-                    <li><button onclick="loginFunction()" class="btn btn-primary"> <p style= "font-family: Arial, Helvetica, sans-serif;font-size:x-large;font-style:normal">Login</p></button></li><p style= "font-size:x-large"> | </p>
-                    <li><button onclick="signUpFunction()" class="btn btn-primary"> <p style= "font-family: Arial, Helvetica, sans-serif;font-size:x-large;font-style:normal">Sign Up</p></button></li> 
+                    <li><button onclick="loginFunction()" class="btn btn-primary"> <p style= "font-family: Arial, Helvetica, sans-serif;font-size:x-large;font-style:normal;font-weight: bold;">Login</p></button></li><p style= "font-size:x-large"> | </p>
+                    <li><button onclick="signUpFunction()" class="btn btn-primary"> <p style= "font-family: Arial, Helvetica, sans-serif;font-size:x-large;font-style:normal;font-weight: bold;">Sign Up</p></button></li> 
                 {% endif %}
             </ul>
         </div>  
