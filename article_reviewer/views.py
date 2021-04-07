@@ -144,7 +144,7 @@ def add_article(request):
 
     return render(request, 'article_web_app/add_article.html', context=context_dict)
 
-
+@login_required
 def make_rating(request):
 
     form = ReviewForm()
@@ -153,9 +153,15 @@ def make_rating(request):
     if request.method == 'POST':
 
         form = ReviewForm(request.POST)
+        try:
+            author = UserProfile.objects.get(user=request.user)
+        except UserProfile.DoesNotExist:
+            author = None
 
         if form.is_valid():
-            review = form.save()
+            review = form.save(commit=False)
+
+            review.author = author
             review.save()
             review.article.totalRating = review.article.totalRating + review.rating
             review.article.amountOfRatings = review.article.amountOfRatings + 1

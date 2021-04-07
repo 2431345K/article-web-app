@@ -47,15 +47,25 @@ class Article(models.Model):
 
         return self.url
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
+    ##website = models.URLField(blank=True)
+    picture = models.ImageField(upload_to='profile_images', blank=True)
+    author = models.BooleanField()
+
+    def __str__(self):
+        return self.user.username
+
 
 # review page - what should it return, foreign keys and max length of raring ?
 class Review(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)  # think this links it to article name
+    author = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
-    commentID = models.IntegerField(max_length=None, unique=True)
+    # commentID = models.IntegerField(max_length=None, unique=True)
     rating = models.IntegerField(default=3, validators=[MinValueValidator(1), MaxValueValidator(5)])
-    author = models.CharField(max_length=30)
-    date = models.DateField()
+
+    date = models.DateField(auto_now_add=True)
     comment = models.CharField(max_length=280)
 
     def __str__(self):
@@ -74,11 +84,4 @@ class Review(models.Model):
 #     return self.username
 ##
 
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
-    ##website = models.URLField(blank=True)
-    picture = models.ImageField(upload_to='profile_images', blank=True)
-    author = models.BooleanField()
 
-    def __str__(self):
-        return self.user.username

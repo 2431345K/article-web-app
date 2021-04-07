@@ -30,4 +30,5 @@ class ReviewForm(forms.ModelForm):
 
     class Meta:
         model = Review
-        fields = ('article', 'commentID', 'rating', 'author', 'date', 'comment')
+        # fields = ('article', 'commentID', 'rating', 'author', 'date', 'comment')
+        fields = ('comment',)
