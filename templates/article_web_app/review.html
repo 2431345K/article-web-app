@@ -11,7 +11,6 @@
     <form id="review_form" method="post" action="{% url 'article_reviewer:review' article.slug%}">
         {% csrf_token %}
         {{ review_form.as_p }}
-        comment: <input type="text" name="Comment" value="" size="280" />
     <input type="submit" value="Submit" />
 	
 	<p></p>
