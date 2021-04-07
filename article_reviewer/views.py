@@ -168,7 +168,6 @@ def make_rating(request, article_name_slug):
             review.article.amountOfRatings = review.article.amountOfRatings + 1
             review.article.averageRating = review.article.totalRating/review.article.amountOfRatings
             review.article.save()
-            #return redirect(reverse('article_reviewer:show_article', kwargs={'slug:article_name_slug' : article_name_slug}))
             return redirect(reverse('article_reviewer:index'))
         else:
             print(form.errors)
