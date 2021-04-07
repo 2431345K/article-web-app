@@ -32,9 +32,9 @@
             <ul>
                 {% for article in articles %}
                     {% if article.picture %}
-                        &ensp;<a href="{% url 'article_reviewer:show_article' article.slug%}"><img src="{{ MEDIA_URL }}{{ article.picture }}" alt="{{ article.author }}"  width="100" height="100"/></a><a>{{ article.averageRating | floatformat:1 }}/5</a>&ensp;
+                        &ensp;<a href="{% url 'article_reviewer:show_article' article.slug%}"><img src="{{ MEDIA_URL }}{{ article.picture }}" alt="{{ article.author }}"  width=30% height=%30/></a><a>{{ article.averageRating | floatformat:1 }}/5</a>&ensp;
                     {% else %}
-                        &ensp;<a href="{% url 'article_reviewer:show_article' article.slug%}"><img src="{{ MEDIA_URL }}{{ article.category.picture }}" alt="{{ article.author }}"  width="100" height="100"/></a><a>{{ article.averageRating | floatformat:1 }}/5</a>&ensp;
+                        &ensp;<a href="{% url 'article_reviewer:show_article' article.slug%}"><img src="{{ MEDIA_URL }}{{ article.category.picture }}" alt="{{ article.author }}"  width=30% height=%30/></a><a>{{ article.averageRating | floatformat:1 }}/5</a>&ensp;
                     {% endif %}
                 {% endfor %}
             </ul>
