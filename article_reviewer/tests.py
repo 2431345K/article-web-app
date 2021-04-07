@@ -84,7 +84,7 @@ class PopulationScriptTests(TestCase):
         categories_len = len(categories)
         categories_strs = list(map(str, categories))
 
-        self.assertEqual(categories_len, 10, f"{FAILURE_HEADER}Expecting 9 categories to be created from the populate_article_reviewer module; found {categories_len}.{FAILURE_FOOTER}")
+        self.assertEqual(categories_len, 10, f"{FAILURE_HEADER}Expecting 10 categories to be created from the populate_article_reviewer module; found {categories_len}.{FAILURE_FOOTER}")
         self.assertTrue('History' in categories_strs, f"{FAILURE_HEADER}The category 'History' was expected but not created by populate_article_reviewer.{FAILURE_FOOTER}")
         self.assertTrue('Music' in categories_strs, f"{FAILURE_HEADER}The category 'Music' was expected but not created by populate_article_reviewer.{FAILURE_FOOTER}")
         self.assertTrue('Sport' in categories_strs, f"{FAILURE_HEADER}The category 'Sport' was expected but not created by populate_article_reviewer.{FAILURE_FOOTER}")
@@ -97,7 +97,7 @@ class PopulationScriptTests(TestCase):
         articles_len = len(articles)
         articles_strs = list(map(str, articles))
 
-        self.assertEqual(articles_len, 5, f"{FAILURE_HEADER}Expecting 5 articles to be created from the populate_article_reviewer module; found {articles_len}.{FAILURE_FOOTER}")
+        self.assertEqual(articles_len, 10, f"{FAILURE_HEADER}Expecting 10 articles to be created from the populate_article_reviewer module; found {articles_len}.{FAILURE_FOOTER}")
         self.assertTrue('https://www.espn.com/mma/story/_/id/31149463/ufc-260-francis-ngannou-won-ufc-heavyweight-championship-jon-jones-superfight-awaits' in articles_strs, f"{FAILURE_HEADER}The article 'Ngannou new champ' was expected but not created by populate_article_reviewer.{FAILURE_FOOTER}")
         self.assertTrue('https://www.billboard.com/hub/legal-and-management/' in articles_strs, f"{FAILURE_HEADER}The article 'ticketmaster sued' was expected but not created by populate_article_reviewer.{FAILURE_FOOTER}")
         self.assertTrue('https://www.onthisday.com/articles/the-man-who-saved-elton-johns-life' in articles_strs, f"{FAILURE_HEADER}The article 'The Man Who Saved Elton Johns Life' was expected but not created by populate_article_reviewer.{FAILURE_FOOTER}")
