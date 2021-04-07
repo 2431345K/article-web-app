@@ -21,8 +21,11 @@ def index(request):
 
 def category(request):
     category_list = Category.objects.all()
+    article_list = Article.objects.order_by('-averageRating')[:10]
 
-    context_dict = {'categories': category_list}
+    context_dict = {}
+    context_dict['categories'] = category_list
+    context_dict['articles'] = article_list
 
     return render(request, 'article_web_app/category.html', context=context_dict)
 
