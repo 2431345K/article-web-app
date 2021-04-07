@@ -25,7 +25,22 @@
     {% if reviews %}
         <ul>
             {% for review in reviews %}
-                <p style= "font-size:large"><br>{{review.date}}<Strong> : {{review.author}} : {{review.rating}}/5</Strong></br></p>
+				 {% if review.rating == 5 %}
+                <p style= "font-size:large"><br>{{review.date}}<Strong> : {{review.author}} : <img style="display: inline; margin-top: 0 5px;" src= "{% static "images/5stars.png" %}" width="100" height="20"> </Strong></br></p>
+				{% endif %}
+				{% if review.rating == 4 %}
+                <p style= "font-size:large"><br>{{review.date}}<Strong> : {{review.author}} : <img style="display: inline; margin-top: 0 5px;" src= "{% static "images/4stars.png" %}" width="100" height="20"> </Strong></br></p>
+				{% endif %}
+				{% if review.rating == 3 %}
+                <p style= "font-size:large"><br>{{review.date}}<Strong> : {{review.author}} : <img style="display: inline; margin-top: 0 5px;" src= "{% static "images/3stars.png" %}" width="100" height="20"> </Strong></br></p>
+				{% endif %}
+				{% if review.rating == 2 %}
+                <p style= "font-size:large"><br>{{review.date}}<Strong> : {{review.author}} : <img style="display: inline; margin-top: 0 5px;" src= "{% static "images/2stars.png" %}" width="100" height="20"> </Strong></br></p>
+				{% endif %}
+				{% if review.rating == 1 %}
+                <p style= "font-size:large"><br>{{review.date}}<Strong> : {{review.author}} : <img style="display: inline; margin-top: 0 5px;" src= "{% static "images/1stars.png" %}" width="100" height="20"> </Strong></br></p>
+				{% endif %}
+				
                 <li><p style= font-style:italic >{{review.comment}}</p></li>
             {% endfor %}
         </ul>
@@ -36,5 +51,26 @@ function reviewFunction() {
     window.location="{% url 'article_reviewer:review' article.slug%}"
 }
 </script>
+<script>
+function getstars(x){
+    {% if x == 5 %}
+	print("woooooooooooooooooooow")
+	return "{% static "images/5stars.png" %}"
+	{% endif %}
+	{% if x == 4 %}
+	return "{% static "images/4stars.png" %}"
+	{% endif %}
+	{%  if x == 3 %}
+	return "{% static "images/3stars.png" %}"
+	{% endif %}
+	{% if x == 2 %}
+	return "{% static 'images/2stars.png' %}"
+	{% else %}
+	return "{% static 'images/1stars.png' %}"
+	{% endif %}
+	
+}
+</script>
+
 
 {% endblock %}
