@@ -58,10 +58,6 @@ def populate():
             'Nature' : {'articles': nature_articles, 'picture': 'category_images/NatureImage.jpg'}, 'News' : {'articles': news_articles, 'picture': 'category_images/NewsImage.jpg'}, 
             'Celebrity' : {'articles': celebrity_articles, 'picture': 'category_images/CelebrityImage.jpeg'}, 'Health' : {'articles' : health_articles, 'picture' : 'category_images/HealthImage.jpg'}}
 
-    reviews = [{'comment':'Great Read!', 'rating':4, 'author':'JamesC', 'article':'https://www.onthisday.com/articles/the-man-who-saved-elton-johns-life'},
-            {'comment':'Such an Interesting Article.', 'rating':4, 'author':'MaryR','article':'https://www.onthisday.com/articles/the-man-who-saved-elton-johns-life'},
-            {'comment':'Meh', 'rating':2, 'author':'MikeB','article':'https://www.onthisday.com/articles/the-man-who-saved-elton-johns-life'}]
-
 
     for cat, cat_data in cats.items():
         c = add_cat(cat, cat_data['picture'])
