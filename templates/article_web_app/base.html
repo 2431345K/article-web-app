@@ -24,15 +24,15 @@
         
         <div class="right">
             <ul>
-                <li><button onclick="myFunction5()" class="btn btn-primary"> Categories </button></li> | 
-                <li><button onclick="myFunction6()" class="btn btn-primary"> Contact Us </button></li> |
+                <li><button onclick="categoryFunction()" class="btn btn-primary"> Categories </button></li> | 
+                <li><button onclick="contactUsFunction()" class="btn btn-primary"> Contact Us </button></li> |
 
                 {% if user.is_authenticated %}
-                    <li><button onclick="myFunction()" class="btn btn-primary"> {{ user.username }} </button></li> |
-                    <li><button onclick="myFunction2()" class="btn btn-primary"> Logout </button></li>
+                    <li><button onclick="accountPageFunction()" class="btn btn-primary"> {{ user.username }} </button></li> |
+                    <li><button onclick="logoutFunction()" class="btn btn-primary"> Logout </button></li>
                 {% else %}
-                    <li><button onclick="myFunction3()" class="btn btn-primary"> Login </button></li> |
-                    <li><button onclick="myFunction4()" class="btn btn-primary"> Sign Up </button></li> 
+                    <li><button onclick="loginFunction()" class="btn btn-primary"> Login </button></li> |
+                    <li><button onclick="signUpFunction()" class="btn btn-primary"> Sign Up </button></li> 
                 {% endif %}
             </ul>
         </div>  
@@ -49,32 +49,32 @@
      </body>
 
      <script>
-        function myFunction() {
+        function accountPageFunction() {
             window.location="{% url 'article_reviewer:my_account' %}"
         }
     </script>
     <script>
-        function myFunction2() {
+        function logoutFunction() {
             window.location="{% url 'article_reviewer:logout' %}"
         }
     </script>
     <script>
-        function myFunction3() {
+        function loginFunction() {
             window.location="{% url 'article_reviewer:login' %}"
         }
     </script>
     <script>
-        function myFunction4() {
+        function signUpFunction() {
             window.location="{% url 'article_reviewer:sign_up' %}"
         }
     </script>
     <script>
-        function myFunction5() {
+        function categoryFunction() {
             window.location="{% url 'article_reviewer:category' %}"
         }
     </script>
     <script>
-        function myFunction6() {
+        function contactUsFunction() {
             window.location="{% url 'article_reviewer:contact_us' %}"
         }
     </script>

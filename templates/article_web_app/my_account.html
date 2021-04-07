@@ -9,12 +9,16 @@
     <h1>My Account Profile</h1>
     <div>
         <h3>Username: {{ user.username }}</h3>
-        <h3>Email : {{ user.email }}</h3>
         {% if user_profile.picture %}
             <img src="{{ MEDIA_URL }}{{ user_profile.picture }}" width="200" height="200"/></br>
         {% else %}
             <img src="{% static 'images/pfp-placeholder.png' %}"></br>
         {% endif %}
-        <a href="{% url 'article_reviewer:add_article' %}">Add article</a>
+        <li><button onclick="addArticleFunction()" class="btn btn-primary"> Add Article </button></li>
     </div>
+    <script>
+        function addArticleFunction() {
+            window.location="{% url 'article_reviewer:add_article' %}"
+        }
+    </script>
 {% endblock %}
